@@ -3,8 +3,3 @@
 #![doc = include_str!("../README.md")]
 #![doc(test(attr(warn(unused), deny(warnings))))]
 
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {}
-}
