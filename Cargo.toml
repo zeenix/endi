@@ -1,6 +1,6 @@
 [package]
 name = "endi"
-version = "1.0.0"
+version = "1.0.1"
 description = "A simple endian-handling library"
 authors = ["Zeeshan Ali Khan <zeenix@gmail.com>"]
 repository = "https://github.com/zeenix/endi"
