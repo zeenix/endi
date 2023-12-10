@@ -16,14 +16,14 @@ use endi::{Endian, ReadBytes, WriteBytes};
 
 let mut buf = [0u8; 4];
 for endian in [Endian::Little, Endian::Big] {
-  endian.write_u32(&mut buf, 0xAB_BA_FE_EF);
-  assert_eq!(endian.read_u32(&buf), 0xAB_BA_FE_EF);
+    endian.write_u32(&mut buf, 0xAB_BA_FE_EF);
+    assert_eq!(endian.read_u32(&buf), 0xAB_BA_FE_EF);
 
-  // Using the `ReadBytes` and `WriteBytes` traits:
-  let mut cursor = std::io::Cursor::new(&mut buf[..]);
-  cursor.write_u32(endian, 0xAB_BA_FE_EF).unwrap();
-  cursor.set_position(0);
-  assert_eq!(cursor.read_u32(endian).unwrap(), 0xAB_BA_FE_EF);
+    // Using the `ReadBytes` and `WriteBytes` traits:
+    let mut cursor = std::io::Cursor::new(&mut buf[..]);
+    cursor.write_u32(endian, 0xAB_BA_FE_EF).unwrap();
+    cursor.set_position(0);
+    assert_eq!(cursor.read_u32(endian).unwrap(), 0xAB_BA_FE_EF);
 }
 ```
 
