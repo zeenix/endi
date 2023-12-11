@@ -4,7 +4,7 @@ use crate::Endian;
 
 macro_rules! decl_read_method {
     ($type:ty, $method:ident) => {
-        /// Read a `$type`.
+        #[doc = concat!("Read a `", stringify!($type), "`.")]
         fn $method(&mut self, endian: Endian) -> Result<$type>;
     };
 }
@@ -59,7 +59,7 @@ impl<R: Read> ReadBytes for R {
 
 macro_rules! decl_write_method {
     ($type:ty, $method:ident) => {
-        /// Write a `$type`.
+        #[doc = concat!("Write a `", stringify!($type), "`.")]
         fn $method(&mut self, endian: Endian, n: $type) -> Result<()>;
     };
 }
