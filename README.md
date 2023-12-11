@@ -34,4 +34,4 @@ You can disable `std` by disabling the default `std` feature. This will disable 
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE-MIT)

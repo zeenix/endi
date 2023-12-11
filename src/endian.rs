@@ -7,11 +7,7 @@ pub enum Endian {
 
 macro_rules! impl_read_method {
     ($type:ty, $method:ident, $size:literal) => {
-        /// Read a `$type` from a byte slice.
-        ///
-        /// # Panics
-        ///
-        /// Panics if the slice is smaller than $size bytes.
+        #[doc = concat!("Read a `", stringify!($type), "` from a byte slice.\n\n", "# Panics\n\n", "Panics if the slice is smaller than ", stringify!($size), " bytes.")]
         #[inline]
         pub fn $method(self, buf: &[u8]) -> $type {
             match self {
@@ -24,11 +20,7 @@ macro_rules! impl_read_method {
 
 macro_rules! impl_write_method {
     ($type:ty, $method:ident, $size:literal) => {
-        /// Write a `$type` to a mutable byte slice.
-        ///
-        /// # Panics
-        ///
-        /// Panics if the slice is smaller than $size bytes.
+        #[doc = concat!("Write a `", stringify!($type), "` into a mutable byte slice.\n\n", "# Panics\n\n", "Panics if the slice is smaller than ", stringify!($size), " bytes.")]
         #[inline]
         pub fn $method(self, buf: &mut [u8], n: $type) {
             match self {

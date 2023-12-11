@@ -4,7 +4,7 @@ use crate::Endian;
 
 macro_rules! decl_read_method {
     ($type:ty, $method:ident) => {
-        /// Read a `$type`.
+        #[doc = concat!("Read a `", stringify!($type), "`.")]
         fn $method(&mut self, endian: Endian) -> Result<$type>;
     };
 }
@@ -31,8 +31,6 @@ pub trait ReadBytes {
 
 macro_rules! impl_read_method {
     ($type:ty, $method:ident, $size:literal) => {
-        /// Read a `$type`.
-        ///
         #[inline]
         fn $method(&mut self, endian: Endian) -> Result<$type> {
             let mut buf = [0; $size];
@@ -61,7 +59,7 @@ impl<R: Read> ReadBytes for R {
 
 macro_rules! decl_write_method {
     ($type:ty, $method:ident) => {
-        /// Write a `$type`.
+        #[doc = concat!("Write a `", stringify!($type), "`.")]
         fn $method(&mut self, endian: Endian, n: $type) -> Result<()>;
     };
 }
@@ -88,8 +86,6 @@ pub trait WriteBytes {
 
 macro_rules! impl_write_method {
     ($type:ty, $method:ident, $size:literal) => {
-        /// Read a `$type`.
-        ///
         #[inline]
         fn $method(&mut self, endian: Endian, n: $type) -> Result<()> {
             let mut buf = [0; $size];
