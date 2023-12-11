@@ -31,8 +31,6 @@ pub trait ReadBytes {
 
 macro_rules! impl_read_method {
     ($type:ty, $method:ident, $size:literal) => {
-        /// Read a `$type`.
-        ///
         #[inline]
         fn $method(&mut self, endian: Endian) -> Result<$type> {
             let mut buf = [0; $size];
@@ -88,8 +86,6 @@ pub trait WriteBytes {
 
 macro_rules! impl_write_method {
     ($type:ty, $method:ident, $size:literal) => {
-        /// Read a `$type`.
-        ///
         #[inline]
         fn $method(&mut self, endian: Endian, n: $type) -> Result<()> {
             let mut buf = [0; $size];
