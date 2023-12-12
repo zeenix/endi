@@ -4,7 +4,7 @@
 #![doc(test(attr(warn(unused), deny(warnings))))]
 
 mod endian;
-pub use endian::Endian;
+pub use endian::{Endian, BE, LE, NATIVE_ENDIAN, NETWORK_ENDIAN};
 
 #[cfg(feature = "std")]
 mod io;

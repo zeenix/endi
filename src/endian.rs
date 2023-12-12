@@ -5,6 +5,15 @@ pub enum Endian {
     Big,
 }
 
+/// Alias for [`Endian::Little`].
+pub const LE: Endian = Endian::Little;
+/// Alias for [`Endian::Big`].
+pub const BE: Endian = Endian::Big;
+/// Same as the return value of [`Endian::native`].
+pub const NATIVE_ENDIAN: Endian = Endian::native();
+/// Alias for [`Endian::Big`].
+pub const NETWORK_ENDIAN: Endian = Endian::Big;
+
 macro_rules! impl_read_method {
     ($type:ty, $method:ident, $size:literal) => {
         #[doc = concat!("Read a `", stringify!($type), "` from a byte slice.\n\n", "# Panics\n\n", "Panics if the slice is smaller than ", stringify!($size), " bytes.")]
